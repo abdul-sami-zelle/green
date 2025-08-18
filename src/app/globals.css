@@ -1,0 +1,42 @@
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f8f8f8;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+:root {
+  /* Colors */
+  --main-color: 236, 178, 100;
+  --link-color: 236, 178, 100;
+  --left-menu-color: 255, 255, 255;
+  --left-menu-link-color: 45, 41, 38;
+  --delivery-buttons-color: 0, 0, 0;
+  --footer-link-color: 117, 117, 117;
+  --header-color: 0, 0, 0;
+  --default-image-placeholder: url(https://cdn.localexpress.io/static/image-placeholder.png);
+
+  --vh: 1vh;
+  --base-skeleton-color: #dbdbdb;
+  --highlight-color: #f5f5f5;
+
+  /* Fonts */
+  --font-family-main: "Arial", sans-serif;
+
+  /* Font Sizes */
+  --fs-h1: 2.5rem; /* ~40px */
+  --fs-h2: 1.75rem; /* ~28px */
+  --fs-body: 1rem; /* 16px */
+  --fs-btn: 1.125rem; /* 18px */
+
+  --le-animation-duration-slow: 0.3s;
+  --le-animation-duration-base: 0.2s;
+  --le-animation-duration-fast: 0.1s;
+}

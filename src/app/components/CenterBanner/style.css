@@ -1,0 +1,38 @@
+.center-banner {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 16px;
+  max-width: 80%;
+}
+
+.center-banner-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0px, calc(100% + 0px)));
+  gap: 16px;
+  margin: 14px auto;
+  max-width: 100%;
+}
+.center-banner-second-conatiner {
+  display: block !important;
+  height: 200px;
+}
+.center-banner-third-conatiner {
+  position: relative;
+  display: block;
+  height: 100%;
+  color: var(--le-white);
+  transition: var(--le-animation-duration-slow);
+}
+.center-banner-third-conatiner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px;
+}
+@media (max-width: 1500px) {
+.center-banner {
+  max-width: 98%;
+}
+}
