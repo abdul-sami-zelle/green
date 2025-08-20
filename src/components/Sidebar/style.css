@@ -1,0 +1,107 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+}
+
+.sidebar-title {
+  font-size: var(--fs-32);
+  font-weight: var(--fw-700);
+  margin-bottom: 15px;
+  color: var(--black);
+  line-height: var(--lh-36);
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  height: 80vh;
+  overflow-y: auto;
+
+
+  scrollbar-width: thin;
+  scrollbar-color:#dbdbdb #f5f5f5;
+}
+
+.sidebar-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-list::-webkit-scrollbar-track {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+}
+
+.sidebar-list::-webkit-scrollbar-thumb {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.sidebar-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+.sidebar-list::-webkit-scrollbar-corner {
+  background: transparent; 
+}
+
+.sidebar-list li {
+  font-size: var(--fs-14);
+  padding: 8px 0;
+  color: var(--black);
+  font-weight: var(--fw-400);
+  line-height: var(--lh-16);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  position: relative;
+}
+
+.sidebar-item span {
+  position: relative;
+  font-size: var(--fs-14);
+  color: var(--black);
+  font-weight: var(--fw-400);
+  line-height: var(--lh-16);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sidebar-item span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--peace);
+  transition: width 0.3s ease;
+}
+
+.sidebar-item:hover span {
+  color: var(--peace);
+}
+
+.sidebar-item:hover span::after {
+  width: 100%;
+}
+
+.sidebar-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.sidebar-item.active span {
+  color: var(--peace);
+}
+
+.sidebar-item.active span::after {
+  width: 100%;
+}
