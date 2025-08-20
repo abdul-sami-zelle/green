@@ -1,7 +1,9 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./style.css";
+import ProductDetailModal from "../ProductDetailModal/ProductDetailModal";
+import { CartContext } from "@/context/addToCart";
 
 const products = [
   {
@@ -170,6 +172,10 @@ export default function Products() {
   const carouselRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
+
+  
 
   const cardWidth = 283;
 
@@ -215,6 +221,34 @@ export default function Products() {
     return () => el.removeEventListener("scroll", updateScrollButtons);
   }, []);
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [])
+
+  const [showDetailModal, setShowDetailodal] = useState(false);
+  const [detailProduct, setDetailProduct] = useState({})
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const handleShowDetailModal = (item) => {
+    setShowDetailodal(true);
+    setDetailProduct(item)
+    const filtered = products.filter((itm) => itm.id !== item.id).slice(0,4);
+    setFilteredProducts(filtered)
+    console.log("detail Product ", item)
+  }
+
+  
+
+  useEffect(() => {
+    if(showDetailModal) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [showDetailModal])
+
   return (
     <div className="main-product-container">
       <div className="carousel-container">
@@ -246,9 +280,24 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="carousel" ref={carouselRef}>
+        {loading ? (
+          <div className="products-shimmer-main-container">
+            {Array.from({length: 4}).map((_, index) => (
+              <div key={index} className="product-shimmer-card-container">
+                <div className="product-shimmer-card-image"></div>
+                <div className="product-shimmer-detail-container">
+                  <div className="product-price-shimmer" />
+                  <div className="product-name-shimmer" />
+                  <div className="product-weight-shimmer" />
+                </div>
+                <div className="product-shimmer-btn"></div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="carousel" ref={carouselRef}>
           {products.map((product) => (
-            <div className="product-card-container" key={product.id}>
+            <div className="product-card-container" key={product.id} onClick={() => handleShowDetailModal(product)}>
               <div className="product-card">
                 <img src={product.image} alt={product.name} />
                 <div className="product-info">
@@ -258,13 +307,24 @@ export default function Products() {
                   <h4 className="name">{product.name}</h4>
                   <p className="weight">{product.weight}</p>
                   <div className="add-to-cart-container"></div>
-                  <button className="add-to-cart">Add to cart</button>
+                  <button className="add-to-cart" onClick={(e) => { e.stopPropagation(); addToCart(product, 1)}}>Add to cart</button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        )}
+
+        
       </div>
+
+        <ProductDetailModal 
+          showModal={showDetailModal}
+          setShowModal={setShowDetailodal}
+          productData={detailProduct}
+          otherProducts={filteredProducts}
+        />
+
     </div>
   );
 }

@@ -64,6 +64,164 @@
   vertical-align: middle;
 }
 
+
+/* Product Shimmer */
+.products-shimmer-main-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  column-gap: 10px;
+}
+
+.product-shimmer-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 25px;
+  width: 100%;
+  height: auto;
+  padding: 10px 20px;
+}
+
+.product-shimmer-card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f0f0f0;
+
+}
+
+.product-shimmer-card-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* start shimmer off screen */
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.product-shimmer-detail-container {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.product-price-shimmer {
+  width: 120px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+}
+
+.product-price-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* start shimmer off screen */
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.product-name-shimmer {
+  width: 160px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+}
+
+.product-name-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* start shimmer off screen */
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.product-weight-shimmer {
+  width: 90px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+}
+
+.product-weight-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* start shimmer off screen */
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.product-shimmer-btn {
+  width: 220px;
+  height: 40px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.product-shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px; /* start shimmer off screen */
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+
+
 .carousel {
   display: flex;
   overflow-x: auto;

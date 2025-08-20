@@ -7,7 +7,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { LiaTruckMovingSolid } from "react-icons/lia";
 import "./style.css";
 
-export default function Header() {
+export default function Header({handleShowSideCart}) {
   const [showModal, setShowModal] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -61,7 +61,7 @@ export default function Header() {
 
               <div className="topbar-right">
                 <button className="btn sign-in">Sign In</button>
-                <button className="btn cart">
+                <button className="btn cart" onClick={handleShowSideCart}>
                   <span>
                     <PiShoppingCartSimple />
                   </span>
