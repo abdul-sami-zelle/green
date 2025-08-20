@@ -68,7 +68,7 @@ const Footer = () => {
             </li>
             <li className="">Terms & Conditions</li>
           </ul>
-          <ul className="">
+          <ul className="footer-last">
             <li className="">© 2025, Green Vine Market</li>
           </ul>
         </div>

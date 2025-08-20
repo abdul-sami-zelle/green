@@ -3,7 +3,6 @@
   margin-left: auto;
   margin-right: auto;
   padding: 0px 16px;
-  max-width: 80%;
 }
 
 .center-banner-container {
@@ -30,9 +29,4 @@
   object-fit: cover;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px;
-}
-@media (max-width: 1500px) {
-.center-banner {
-  max-width: 98%;
-}
 }

@@ -14,11 +14,11 @@
 .product-categories-second {
   flex: 1 1 calc(20% - 20px);
   min-width: 200px;
-  border-radius: 8px;
+  border-radius: var(--br-8);
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  background: #fff;
+  background: var(--white);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 250px;
 }
@@ -52,7 +52,7 @@
   left: 0;
   width: 100%;
   height: 70px;
-  background: white;
+  background: var(--white);
   border-top: 1px solid #eee;
   display: flex;
   justify-content: center;
@@ -66,16 +66,17 @@
 }
 
 .category-text {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--fs-20);
+  font-weight: var(--fw-300);
+  line-height: var(--lh-22);
   text-align: center;
-  color: #333;
+  color: var(--black);
   transition: font-size 0.3s ease;
 }
 
 .product-categories-second:hover .category-text {
-  font-size: 17px;
-  color: rgba(var(--main-color), 1);
+  font-size: var(--fs-22);
+  color: var(--peace);
 }
 
 @media (max-width: 1200px) {

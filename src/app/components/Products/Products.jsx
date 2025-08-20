@@ -2,6 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./style.css";
+import ProductCard from "../ProductCard/ProductCard";
+import ProductDetailModal from "../ProductDetailModal/ProductDetailModal";
 
 const products = [
   {
@@ -11,6 +13,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef1.jpg",
+    description:
+      "Premium halal ground beef with 90% lean meat and 10% fat. Perfect for healthy meals, tacos, and stir-fry.",
   },
   {
     id: 2,
@@ -19,6 +23,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef2.jpg",
+    description:
+      "Juicy and flavorful halal ground beef with 80% lean and 20% fat, ideal for burgers and meatballs.",
   },
   {
     id: 3,
@@ -27,6 +33,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef3.jpg",
+    description:
+      "Thick, juicy halal Black Angus patties (8oz each) for restaurant-style gourmet burgers at home.",
   },
   {
     id: 4,
@@ -35,6 +43,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef4.jpg",
+    description:
+      "Specially ground halal beef perfect for making chili, curries, and hearty stews.",
   },
   {
     id: 5,
@@ -43,6 +53,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef5.jpg",
+    description:
+      "Tender and flavorful country-style ribs from halal Black Angus beef, ideal for grilling or slow cooking.",
   },
   {
     id: 6,
@@ -51,6 +63,8 @@ const products = [
     lb: "/ 2 lb",
     weight: "2 lb",
     image: "/assets/Images/beef6.jpg",
+    description:
+      "Family pack of lean halal ground beef (90/10) for meal prep, pasta dishes, and healthy recipes.",
   },
   {
     id: 7,
@@ -59,6 +73,8 @@ const products = [
     lb: "/ 2 lb",
     weight: "2 lb",
     image: "/assets/Images/beef7.jpg",
+    description:
+      "Value family pack of halal ground beef (80/20) with rich flavor, perfect for large meals and BBQs.",
   },
   {
     id: 8,
@@ -67,6 +83,8 @@ const products = [
     lb: "/ pack",
     weight: "4 x 8oz",
     image: "/assets/Images/beef8.jpg",
+    description:
+      "Pack of 4 halal Angus beef patties (8oz each), perfect for quick and delicious homemade burgers.",
   },
   {
     id: 9,
@@ -75,6 +93,8 @@ const products = [
     lb: "/ 2 lb",
     weight: "2 lb",
     image: "/assets/Images/beef9.jpg",
+    description:
+      "Large pack of halal chili meat, ground with the right texture for spicy chili and curries.",
   },
   {
     id: 10,
@@ -83,6 +103,8 @@ const products = [
     lb: "/ 2 lb",
     weight: "2 lb",
     image: "/assets/Images/beef10.jpg",
+    description:
+      "Large cut halal Angus ribs, meaty and juicy, perfect for BBQ or oven roasting.",
   },
   {
     id: 11,
@@ -91,6 +113,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef5.jpg",
+    description:
+      "Juicy halal ribeye steak cut, marbled to perfection for a rich, tender flavor.",
   },
   {
     id: 12,
@@ -99,6 +123,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef1.jpg",
+    description:
+      "Extra lean halal ground beef (93/7) for those who prefer healthier, lighter dishes.",
   },
   {
     id: 13,
@@ -107,6 +133,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef2.jpg",
+    description:
+      "Slow-cook this halal Angus chuck roast for tender, flavorful pot roast or stews.",
   },
   {
     id: 14,
@@ -115,6 +143,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef3.jpg",
+    description:
+      "Rich and meaty halal beef short ribs, perfect for braising, BBQ, or slow cooking.",
   },
   {
     id: 15,
@@ -123,6 +153,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef4.jpg",
+    description:
+      "Convenient halal beef cubes, ideal for curries, kebabs, stews, and stir-fry dishes.",
   },
   {
     id: 16,
@@ -131,6 +163,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef6.jpg",
+    description:
+      "Premium halal Angus sirloin steak with bold flavor and tenderness, great for grilling.",
   },
   {
     id: 17,
@@ -139,6 +173,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef7.jpg",
+    description:
+      "Tender and juicy halal beef brisket, ideal for slow cooking, smoking, or roasting.",
   },
   {
     id: 18,
@@ -147,6 +183,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef8.jpg",
+    description:
+      "Lean and flavorful halal Angus flank steak, perfect for fajitas and stir-fry.",
   },
   {
     id: 19,
@@ -155,6 +193,8 @@ const products = [
     lb: "/ lb",
     weight: "1 lb",
     image: "/assets/Images/beef9.jpg",
+    description:
+      "Luxury cut halal beef tenderloin, exceptionally tender and juicy, ideal for fine dining recipes.",
   },
   {
     id: 20,
@@ -163,6 +203,8 @@ const products = [
     lb: "/ 2 lb",
     weight: "2 lb",
     image: "/assets/Images/beef10.jpg",
+    description:
+      "Thick and juicy large-cut halal ribeye steak, marbled for premium flavor and tenderness.",
   },
 ];
 
@@ -170,6 +212,7 @@ export default function Products() {
   const carouselRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const cardWidth = 283;
 
@@ -190,6 +233,7 @@ export default function Products() {
         left: -(cardWidth * visibleCards),
         behavior: "smooth",
       });
+      setTimeout(updateScrollButtons, 400);
     }
   };
 
@@ -202,6 +246,7 @@ export default function Products() {
         left: cardWidth * visibleCards,
         behavior: "smooth",
       });
+      setTimeout(updateScrollButtons, 400);
     }
   };
 
@@ -210,10 +255,39 @@ export default function Products() {
     if (!el) return;
 
     el.addEventListener("scroll", updateScrollButtons);
+    window.addEventListener("resize", updateScrollButtons);
     updateScrollButtons();
 
-    return () => el.removeEventListener("scroll", updateScrollButtons);
+    return () => {
+      el.removeEventListener("scroll", updateScrollButtons);
+      window.removeEventListener("resize", updateScrollButtons);
+    };
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    });
+  }, []);
+
+  const [showDetailModal, setShowDetailodal] = useState(false);
+  const [detailProduct, setDetailProduct] = useState({});
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const handleShowDetailModal = (item) => {
+    setShowDetailodal(true);
+    setDetailProduct(item);
+    const filtered = products.filter((itm) => itm.id !== item.id).slice(0, 4);
+    setFilteredProducts(filtered);
+    console.log("detail Product ", item);
+  };
+
+  useEffect(() => {
+    if (showDetailModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showDetailModal]);
 
   return (
     <div className="main-product-container">
@@ -246,25 +320,39 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="carousel" ref={carouselRef}>
-          {products.map((product) => (
-            <div className="product-card-container" key={product.id}>
-              <div className="product-card">
-                <img src={product.image} alt={product.name} />
-                <div className="product-info">
-                  <p className="price">
-                    {product.price} <span className="lb">{product.lb}</span>
-                  </p>
-                  <h4 className="name">{product.name}</h4>
-                  <p className="weight">{product.weight}</p>
-                  <div className="add-to-cart-container"></div>
-                  <button className="add-to-cart">Add to cart</button>
+        {loading ? (
+          <div className="products-shimmer-main-container">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div key={index} className="product-shimmer-card-container">
+                <div className="product-shimmer-card-image"></div>
+                <div className="product-shimmer-detail-container">
+                  <div className="product-price-shimmer" />
+                  <div className="product-name-shimmer" />
+                  <div className="product-weight-shimmer" />
                 </div>
+                <div className="product-shimmer-btn"></div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="carousel" ref={carouselRef}>
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onClick={handleShowDetailModal}
+              />
+            ))}
+          </div>
+        )}
       </div>
+
+      <ProductDetailModal
+        showModal={showDetailModal}
+        setShowModal={setShowDetailodal}
+        productData={detailProduct}
+        otherProducts={filteredProducts}
+      />
     </div>
   );
 }

@@ -120,8 +120,8 @@ export default function Header() {
                       Delivery to:{" "}
                       <span>
                         Council Bluffs, United States{" "}
-                        <span className="down-icon">
-                          <MdKeyboardArrowDown />
+                        <span >
+                          <MdKeyboardArrowDown className="down-icon"/>
                         </span>
                       </span>
                     </div>

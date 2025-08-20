@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import "./style.css";
 
 const categories = [
@@ -25,11 +27,22 @@ const categories = [
 ];
 
 const ProductCategories = () => {
+  const router = useRouter();
+
+  const handleNavigate = (category) => {
+    router.push(`/category`);
+  };
+
   return (
     <div className="product-categories-main">
       <div className="product-categories-first">
         {categories.map((cat, index) => (
-          <div key={index} className="product-categories-second">
+          <div
+            key={index}
+            className="product-categories-second"
+            onClick={() => handleNavigate(cat.name)}
+            style={{ cursor: "pointer" }}
+          >
             <div className="image-wrapper">
               <img src={cat.image} alt={cat.name} className="category-image" />
             </div>
@@ -44,4 +57,3 @@ const ProductCategories = () => {
 };
 
 export default ProductCategories;
-
