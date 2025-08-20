@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
         return updatedCart;
       }
 
-      // If new product, add it
+      // If new product, add it here
       return [...prevCart, { ...product, quantity }];
     });
     setShowSideCart(true)
