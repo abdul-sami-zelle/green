@@ -35,7 +35,7 @@ export const CartProvider = ({ children }) => {
     });
     setShowSideCart(true);
   };
-
+ // const here
   const removeFromCart = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
