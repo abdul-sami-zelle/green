@@ -30,7 +30,7 @@ export default function CheckoutPage() {
         showCart={false}
         showBack={true}
       />
-      <div className="checkout-page">
+      <div className="checkout-page changer">
         <div className="checkout-header">
           <div className="checkout-logo">
             {/* <img
